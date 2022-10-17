@@ -30,3 +30,37 @@ Mở cửa sổ terminal lên và chạy câu lệnh npm i để tải các thư
 Tiến hành chạy lệnh "tsc -p ./" trên terminal để chương trình build cả thư mục src sang file javascript
 chạy lệnh "node ./dist/main.js" để hiển thị kết quả (log result)
 
+
+ví dụ promise API :
+
+function httpGet ( url : string ) :Promise<any> {
+return new Promise(
+function (resolve, reject ) {
+cons t reques t = new XMLHttpRequest( ) ;
+request.onload = function () {
+if ( this.status === 200) {
+// Success
+resolve(this.response) ;
+} else {
+// Something went wrong (404 etc . )
+reject(new Error(this.statusText));
+}
+};
+request.onerror = function ( ) {
+reject ( new Error(' XMLHttpRequest Error:
+} ;
+request.open( 'GET', url );
+request. send();
+} ) ;
+}
+// gọi API
+httpGet(
+'https:// api. github. com/ search/ repositories? q=angular'
+)
+.then(
+function (value) {
+console.log( 'Contents: ' + value);
+} ,
+function (reason) {
+console.error('Something went wrong', reason);
+} );
