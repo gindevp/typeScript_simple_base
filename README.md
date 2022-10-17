@@ -1,3 +1,4 @@
+# TypeSript cơ bản và promise khá quan trọng
 ## Cấu hình file tsconfig.json:
 
 {
